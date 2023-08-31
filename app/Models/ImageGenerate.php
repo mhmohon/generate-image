@@ -5,7 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GenerateImage extends Model
+class ImageGenerate extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'keyword',
+        'status',
+        'promot',
+        'src',
+    ];
 }

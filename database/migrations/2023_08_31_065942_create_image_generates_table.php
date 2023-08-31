@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('generate_images', function (Blueprint $table) {
+        Schema::create('image_generates', function (Blueprint $table) {
             $table->id();
             $table->string('keyword');
-            $table->string('status')->default('pending');
-            $table->string('src')->nullable();
+            $table->string('status')->default('processing');
+            $table->string('promot')->nullable();
+            $table->longText('src')->nullable();
+            $table->text('response')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('generate_images');
+        Schema::dropIfExists('image_generates');
     }
 };
