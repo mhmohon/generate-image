@@ -3,7 +3,6 @@
   <h3 align="center">AI Image Generate App</h3>
   <p align="center">
     A way to generate ai images with prompt
-	![dashboard][dashboard]
   </p>
 </div>
 
@@ -70,12 +69,8 @@ Before you can run this Laravel project, you'll need to install the following so
 - Laravel v10.0 or later
 - MySQL
 
-You will also need to set up a MySQL database and configure Laravel to use it. Here's how:
-
-1. Create a new MySQL database foryour project.
-2. Update the **DB_DATABASE**, **DB_USERNAME**, and **DB_PASSWORD** values in the **.env** file to match your MySQL database credentials.
-
 ### Installation
+#### General Installation
 Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/10.x)
 
 1. Clone the repo
@@ -94,53 +89,62 @@ Please check the official laravel installation guide for server requirements bef
 
 		cp .env.example .env
 	
-5. Generate a new application key
+5. Create a sqlite database
+
+		touch database/database.sqlite
+	
+6. Generate a new application key
 
 		php artisan key:generate
 	
-6. Run the database migrations (**Set the database connection in .env before migrating**)
+7. Run the database migrations
 
 		php artisan migrate --seed
 	
-7. Create a symlink to the storage
+8. Create a symlink to the storage
 
 		php artisan storage:link
-		
-8. Run the queue (In another command tab)
+	
+9. Run the server
+
+		php artisan serve
+	
+10. Run the queue (**In another command tab**)
 
 		php artisan queue:work
 
+**Update the OPENAI_API_KEY value in .env file**
+
 You can now access the server at http://localhost:8000/admin/login
 
-**You can setup the project with docker (Laravel sail).**
+#### Docker (Laravel sail) Installation
 Please check if you have Docker and Laravel sail install. The official laravel sail installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/10.x/sail)
-1. Clone the repo
 
-		git clone git@github.com:mhmohon/generate-image.git
-	
-2. Switch to the repo folder
+**Must Have to Follow 1 to 5 steps of normal install.** 
+After that follow bellow:
 
-		cd generate-image
 	
 3. Run the laravle sail build command
 
-   	 ./vendor/bin/sail build
+		./vendor/bin/sail build
 	 
 4. Run the laravel saild up command
 
-		/vendor/bin/sail up
+		./vendor/bin/sail up -d
 	
-5. Run the database migrations (**Set the database connection in .env before migrating**)
+5. Run the database migrations
 
-		php artisan migrate --seed
+		./vendor/bin/sail php artisan migrate --seed
 	
 6. Create a symlink to the storage
 
-		php artisan storage:link
+		./vendor/bin/sail php artisan storage:link
 	
 7. Run the queue (In another command tab)
 
-		/vendor/bin/sail php artisan queue:work
+		./vendor/bin/sail php artisan queue:work
+
+**Update the OPENAI_API_KEY value in .env file**
 
 You're ready to go! Visit the url with /admin/login in your browser, and login with:
 
@@ -165,12 +169,9 @@ OpenAI is a premier artificial intelligence research organization, widely recogn
 <!-- USAGE EXAMPLES -->
 ## Usage
 ### Few Screenshots
-##### Login Page
-[![login.png](https://i.postimg.cc/PqXH3QxG/login.png)](https://postimg.cc/870xsWMw)
-##### Home Page
-[![homepage.png](https://i.postimg.cc/G3WHM6nZ/homepage.png)](https://postimg.cc/HjtYnZx2)
-##### Audit Log Page
-[![auditpage.png](https://i.postimg.cc/3NnmGBdK/auditpage.png)](https://postimg.cc/Mffn2174)
+##### Image Generate Page
+![homepage.png](https://i.ibb.co/y6nBdbp/dashboard.png)
+
 
 
 You can run **PHPStan** test by using this command
