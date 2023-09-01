@@ -20,7 +20,7 @@ class GeneratePromptAction
                     'prompt' => 'Write a 50 word prompt that will be used to generate an AI image. The image is about: '. $keyword
                 ]);
         } catch (Exception $e) {
-            Log::info("Failed to create promot message log: {$e->getMessage()}");
+            Log::info("Failed to generate promot message log: {$e->getMessage()}");
             return false;
         }
     }

@@ -22,7 +22,7 @@ class GenerateImageAction
                     'response_format' => 'b64_json', // b64_json or url
                 ]);
         } catch (Exception $e) {
-            Log::info("Failed to create promot message log: {$e->getMessage()}");
+            Log::info("Failed to generate image message log: {$e->getMessage()}");
             return false;
         }
     }
