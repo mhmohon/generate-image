@@ -6,7 +6,6 @@ use App\Actions\GenerateImageAction;
 use App\Actions\GeneratePromptAction;
 use App\Actions\ProcessImageAction;
 use App\Services\Contracts\ImageGenerateInterface;
-use Illuminate\Support\Facades\Log;
 use App\Actions\FailedJobAction;
 
 class ImageGenerateService implements ImageGenerateInterface
@@ -25,7 +24,6 @@ class ImageGenerateService implements ImageGenerateInterface
     public function process(array $data): void
     {
         $res = $this->generatePrompt->handle($data['keyword']);
-        Log::info("prompt url: ". json_encode($res));
 
         if(!$res || !isset($res['choices'][0]['text'])){
             $this->FailedJob->handle($data['id'], "Error Occurred During Prompt Creation");

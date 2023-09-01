@@ -21,7 +21,7 @@ class FailedJobAction
                 "response" => $msg,
             ]);
         } catch (QueryException $e) {
-            Log::error("Failed to execute failed job action: {$e->getMessage()}");
+            Log::info("Failed to execute failed job action: {$e->getMessage()}");
         }
     }
 }
