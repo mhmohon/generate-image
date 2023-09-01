@@ -5,7 +5,8 @@ namespace App\Services\Contracts;
 interface ImageGenerateInterface
 {
     /**
-     * @param int $userID
+     * @param array $data
+     * @return void
      */
-    public function process(array $data);
+    public function process(array $data): void;
 }

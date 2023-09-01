@@ -4,40 +4,43 @@ namespace App\Services;
 
 use App\Actions\GenerateImageAction;
 use App\Actions\GeneratePromptAction;
-use App\Models\ImageGenerate;
+use App\Actions\ProcessImageAction;
 use App\Services\Contracts\ImageGenerateInterface;
 use Illuminate\Support\Facades\Log;
-use Facades\App\Actions\FailedJobAction;
+use App\Actions\FailedJobAction;
 
 class ImageGenerateService implements ImageGenerateInterface
 {
-
     public function __construct(
+        private FailedJobAction $FailedJob,
         private GeneratePromptAction $generatePrompt,
-        private GenerateImageAction $generateImage
-    ){
-        
-    }
-    /**
-     * @param int $userID
-     */
-    public function process(array $data)
-    {
-        $res = $this->generatePrompt->handle($data['id'], $data['keyword']);
+        private GenerateImageAction $generateImage,
+        private ProcessImageAction $processImage
+    ){}
 
-        if(empty($res) || !isset($res['choices'][0]['texts'])){
-            FailedJobAction::handle($data['id'], "Error while promot generate");
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function process(array $data): void
+    {
+        $res = $this->generatePrompt->handle($data['keyword']);
+        Log::info("prompt url: ". json_encode($res));
+
+        if(!$res || !isset($res['choices'][0]['text'])){
+            $this->FailedJob->handle($data['id'], "Error Occurred During Prompt Creation");
+            return;
         }
-        $imageRes = $this->generateImage->handle($data['id'], $res['choices'][0]['text']);
+        $imageRes = $this->generateImage->handle($res['choices'][0]['text']);
         
-        if(empty($imageRes) || !isset($imageRes['data'][0]['url']['test'])){
-            FailedJobAction::handle($data['id'], "Error while promot generate");
+        if(!$imageRes || !isset($imageRes['data'][0]['b64_json'])){
+            $this->FailedJob->handle($data['id'], "Error Occurred During Image Creation");
+            return;
         }
-        ImageGenerate::where('id', $data['id'])->update([
-            "status" => "completed",
-            "promot" => $res['choices'][0]['text'],
-            "src" => $imageRes['data'][0]['url'],
-            "response" => "Generate Image Sucessfully",
-        ]);
+
+        $imageUrl = $imageRes['data'][0]['b64_json'];
+        $prompt = $res['choices'][0]['text'];
+
+        $this->processImage->handle($data['id'], $prompt, $imageUrl);
     }
 }

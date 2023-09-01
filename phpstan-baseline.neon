@@ -1,0 +1,21 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Match expression does not handle remaining value\\: string$#"
+			count: 1
+			path: app/Filament/Resources/ImageGenerateResource.php
+
+		-
+			message: "#^Method App\\\\Jobs\\\\ImageGenerateJob\\:\\:failed\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: app/Jobs/ImageGenerateJob.php
+
+		-
+			message: "#^Property App\\\\Jobs\\\\ImageGenerateJob\\:\\:\\$data has no type specified\\.$#"
+			count: 1
+			path: app/Jobs/ImageGenerateJob.php
+
+		-
+			message: "#^Property App\\\\Jobs\\\\ImageGenerateJob\\:\\:\\$failedJob has no type specified\\.$#"
+			count: 1
+			path: app/Jobs/ImageGenerateJob.php

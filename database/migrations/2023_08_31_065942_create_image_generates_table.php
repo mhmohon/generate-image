@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('keyword');
             $table->string('status')->default('processing');
-            $table->string('promot')->nullable();
+            $table->string('prompt')->nullable();
+            $table->string('file_name')->nullable();
             $table->longText('src')->nullable();
             $table->text('response')->nullable();
             $table->timestamps();

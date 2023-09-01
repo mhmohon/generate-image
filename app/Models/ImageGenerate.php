@@ -8,10 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class ImageGenerate extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
         'keyword',
         'status',
-        'promot',
+        'prompt',
+        'file_name',
         'src',
+        'response',
     ];
 }

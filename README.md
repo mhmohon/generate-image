@@ -1,66 +1,207 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!-- PROJECT INFO -->
+<div align="center">
+  <h3 align="center">AI Image Generate App</h3>
+  <p align="center">
+    A way to generate ai images with prompt
+	![dashboard][dashboard]
+  </p>
+</div>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#architecture-and-design-pattern">Architecture and Design Pattern</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The AI Image Generation App is a cutting-edge and user-friendly software application crafted to utilize the potential of artificial intelligence for crafting remarkable and one-of-a-kind images from simple prompts. Furthermore, it allows users to download these generated images directly to their local devices for offline use.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Built With
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+This project is build with these technologies.
 
-## Laravel Sponsors
+[![Laravel][Laravel.com]][Laravel-url]
+[![filament][Filament]][filament-url]
+[![OpenAI][OpenAi]][OpenAI-url]
+[![DallE][DallE]][DallE-url]
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+<!-- Features -->
+## Features
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+-  Utilizing the ai, the application creates images from user inputs.
+- The app conveniently stores all generated images in a personalized gallery for effortless retrieval.
+- Users have the option to download any of the generated images to their devices.
+- The application also provides the functionality to delete images as needed.
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<!-- GETTING STARTED -->
+## Getting Started
 
-## Code of Conduct
+### Prerequisites
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Before you can run this Laravel project, you'll need to install the following software:
 
-## Security Vulnerabilities
+- PHP v8.1 or later
+- Composer v2.5.4 or later
+- Laravel v10.0 or later
+- MySQL
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+You will also need to set up a MySQL database and configure Laravel to use it. Here's how:
 
-## License
+1. Create a new MySQL database foryour project.
+2. Update the **DB_DATABASE**, **DB_USERNAME**, and **DB_PASSWORD** values in the **.env** file to match your MySQL database credentials.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Installation
+Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/10.x)
+
+1. Clone the repo
+
+		git clone git@github.com:mhmohon/generate-image.git
+	
+2. Switch to the repo folder
+
+		cd generate-image
+	
+3. Install all the dependencies using composer
+
+		composer install
+	
+4. Copy the example env file and make the required configuration changes in the .env file
+
+		cp .env.example .env
+	
+5. Generate a new application key
+
+		php artisan key:generate
+	
+6. Run the database migrations (**Set the database connection in .env before migrating**)
+
+		php artisan migrate --seed
+	
+7. Create a symlink to the storage
+
+		php artisan storage:link
+		
+8. Run the queue (In another command tab)
+
+		php artisan queue:work
+
+You can now access the server at http://localhost:8000/admin/login
+
+**You can setup the project with docker (Laravel sail).**
+Please check if you have Docker and Laravel sail install. The official laravel sail installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/10.x/sail)
+1. Clone the repo
+
+		git clone git@github.com:mhmohon/generate-image.git
+	
+2. Switch to the repo folder
+
+		cd generate-image
+	
+3. Run the laravle sail build command
+
+   	 ./vendor/bin/sail build
+	 
+4. Run the laravel saild up command
+
+		/vendor/bin/sail up
+	
+5. Run the database migrations (**Set the database connection in .env before migrating**)
+
+		php artisan migrate --seed
+	
+6. Create a symlink to the storage
+
+		php artisan storage:link
+	
+7. Run the queue (In another command tab)
+
+		/vendor/bin/sail php artisan queue:work
+
+You're ready to go! Visit the url with /admin/login in your browser, and login with:
+
+-   **Username:** admin@gmail.com
+-   **Password:** password
+
+<!-- Architecture and Design Pattern -->
+## Architecture and Design Pattern
+#### Service Layer Pattern
+I have chosen to use the Service Layer design patterns in my implementation of this application also used the **service interface** layer so that the code will be more abstract and increased testability, which make the application more modular, maintainable, and scalable.
+
+#### Action Pattern
+In an effort to enhance single responsibility and code organization, I've decided to implement the Action pattern for all the actions of this applications.
+
+#### Other Technologies
+#### OpenAI
+OpenAI is a premier artificial intelligence research organization, widely recognized for its groundbreaking contributions in the field of natural language processing. Leveraging these advanced technologies, we will create prompts for generating images using other innovative technologies.
+
+#### DALL·E
+"DALL·E" is another remarkable creation, specifically designed for image generation. DALL·E harnesses the capabilities of deep learning and generative models to produce astonishing images from textual prompts. We will utilize this technology to generate images based on prompts.
+
+<!-- USAGE EXAMPLES -->
+## Usage
+### Few Screenshots
+##### Login Page
+[![login.png](https://i.postimg.cc/PqXH3QxG/login.png)](https://postimg.cc/870xsWMw)
+##### Home Page
+[![homepage.png](https://i.postimg.cc/G3WHM6nZ/homepage.png)](https://postimg.cc/HjtYnZx2)
+##### Audit Log Page
+[![auditpage.png](https://i.postimg.cc/3NnmGBdK/auditpage.png)](https://postimg.cc/Mffn2174)
+
+
+You can run **PHPStan** test by using this command
+
+		./vendor/bin/phpstan analyse
+	
+**Result**
+
+![phpstan][phpstan]
+
+
+<!-- CONTACT -->
+## Contact
+
+Mosharrf Hossain - [@Linkedin](https://www.linkedin.com/in/mhmohon/) - mhmosharrf@gmail.com
+
+Project Link: [https://github.com/mhmohon/generate-image](https://github.com/mhmohon/generate-image)
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[linkedin-url]: https://linkedin.com/in/mhmohon
+[product-screenshot]: images/screenshot.png
+[filament]: https://img.shields.io/badge/Filament-35495E?style=for-the-badge&logo=filament&logoColor=4FC08D
+[OpenAI]: https://img.shields.io/badge/OpenAI-412991.svg?style=for-the-badge&logo=OpenAI&logoColor=white
+[DallE]: https://img.shields.io/badge/DallE-74aa9c?style=for-the-badge&logo=openai&logoColor=white
+[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[OpenAI-url]: https://openai.com/
+[DallE-url]: https://openai.com/dall-e-2
+[filament-url]: https://filamentphp.com/
+[Laravel-url]: https://laravel.com
+[phpstan]: https://i.ibb.co/6wCLKxG/phpstan.png
+[dashboard]: https://i.ibb.co/y6nBdbp/dashboard.png

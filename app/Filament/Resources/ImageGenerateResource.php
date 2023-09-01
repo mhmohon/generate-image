@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources;
 
+use Facades\App\Actions\DownloadFileAction;
+use App\Enums\ImageGenerateStatus;
 use App\Filament\Resources\ImageGenerateResource\Pages;
-use App\Filament\Resources\ImageGenerateResource\RelationManagers;
 use App\Models\ImageGenerate;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -14,14 +15,12 @@ use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ImageGenerateResource extends Resource
 {
     protected static ?string $model = ImageGenerate::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
 
     public static function form(Form $form): Form
     {
@@ -43,14 +42,13 @@ class ImageGenerateResource extends Resource
                     ->searchable(),
                 Tables\Columns\BadgeColumn::make('status')
                     ->colors([
-                        'danger' => 'failed',
-                        'warning' => 'processing',
-                        'success' => fn ($state) => in_array($state, ['completed']),
+                        'danger' => ImageGenerateStatus::FAILED,
+                        'warning' => ImageGenerateStatus::PROCESSING,
+                        'success' => fn ($state) => in_array($state, [ImageGenerateStatus::COMPLETED]),
                     ]),
                 Tables\Columns\TextColumn::make('created_at')
                     ->since()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->since()
                     ->sortable()
@@ -60,6 +58,16 @@ class ImageGenerateResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('download')
+                    ->hidden(function($record){
+                        if (isset($record->status) && $record->status !== ImageGenerateStatus::COMPLETED) {
+                            return true;
+                        }
+                    })
+                    ->action(function ($record) {
+                        return DownloadFileAction::handle($record);
+                    })
+                    ->icon('heroicon-m-arrow-down-tray'),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -81,12 +89,12 @@ class ImageGenerateResource extends Resource
                 TextEntry::make('status')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'processing' => 'gray',
-                        'completed' => 'success',
-                        'failed' => 'danger',
+                        ImageGenerateStatus::PROCESSING => 'gray',
+                        ImageGenerateStatus::COMPLETED => 'success',
+                        ImageGenerateStatus::FAILED => 'danger',
                     }),
-                TextEntry::make('promot'),
-                ImageEntry::make('src')->width(300)->height(300),
+                TextEntry::make('prompt'),
+                ImageEntry::make('src')->label('Image')->width(300)->height(300),
                 TextEntry::make('response'),
                 TextEntry::make('created_at')
                     ->since(),
