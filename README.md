@@ -85,7 +85,7 @@ Please check the official laravel installation guide for server requirements bef
 
 		composer install
 	
-4. Copy the example env file and make the required configuration changes in the .env file
+4. Copy the example env file and make the required ** configuration changes ** in the .env file
 
 		cp .env.example .env
 	
@@ -170,7 +170,9 @@ OpenAI is a premier artificial intelligence research organization, widely recogn
 ## Usage
 ### Few Screenshots
 ##### Image Generate Page
-![homepage.png](https://i.ibb.co/y6nBdbp/dashboard.png)
+![homepage.png](https://i.postimg.cc/hj1fy4r4/dashboard.png)
+![addimage.png](https://i.postimg.cc/qRTNx62Z/addimage.png)
+![viewimage.png](https://i.postimg.cc/cLPg6bCW/viewimage.png)
 
 
 
